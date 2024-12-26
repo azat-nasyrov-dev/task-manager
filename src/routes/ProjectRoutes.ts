@@ -10,5 +10,6 @@ const projectController = new ProjectController(projectService);
 
 const router = Router();
 router.post('/create', auth, projectController.createProject.bind(projectController));
+router.get('', auth, projectController.findProjectsWithTasks.bind(projectController));
 
 export default router;

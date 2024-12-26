@@ -14,4 +14,13 @@ export class ProjectService {
 
     return await this.projectRepository.createProject(title, description, userId);
   }
+
+  public async findProjectsWithTasks(userId: string) {
+    const projects = await this.projectRepository.findProjectsByUserId(userId);
+    if (!projects) {
+      throw new Error('No projects found');
+    }
+
+    return projects;
+  }
 }

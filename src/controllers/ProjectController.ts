@@ -36,4 +36,30 @@ export class ProjectController {
       });
     }
   }
+
+  public async findProjectsWithTasks(req: ExpressRequestInterface, res: Response) {
+    const userId = req.userId;
+
+    if (!userId) {
+      logger.error('User ID is missing in the request');
+      res.status(401).json({
+        error: 'Unauthorized',
+        message: 'User ID is missing in the request',
+      });
+      return;
+    }
+
+    try {
+      const projects = await this.projectService.findProjectsWithTasks(userId);
+
+      logger.info(`Projects fetched successfully: ${projects.length} projects found`);
+      res.status(200).json(projects);
+    } catch (error: any) {
+      logger.error(`Failed to fetch projects: ${error.message}`);
+      res.status(400).json({
+        error: 'Failed to fetch projects',
+        message: error.message || 'An unexpected error occurred',
+      });
+    }
+  }
 }

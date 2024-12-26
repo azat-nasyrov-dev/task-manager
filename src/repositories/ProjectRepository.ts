@@ -12,7 +12,19 @@ export class ProjectRepository {
   public async findProjectsByUserId(userId: string) {
     return this.prisma.project.findMany({
       where: { userId },
-      include: { tasks: true },
+      include: {
+        tasks: {
+          select: {
+            id: true,
+            title: true,
+            status: true,
+            assignedTo: true,
+            assignee: {
+              select: { name: true },
+            },
+          },
+        },
+      },
     });
   }
 }
