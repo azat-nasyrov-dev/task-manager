@@ -6,3 +6,14 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "john.doe@gmail.com"
 }
+
+
+### Create project
+POST http://localhost:5001/projects/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNmE0MTJmOC00OTk3LTQ5ZmUtYWUxOS01Njk3M2E3OGQ5YTAiLCJpYXQiOjE3MzUxNjk1NzUsImV4cCI6MTczNTE3MzE3NX0.E07yV27nWzBL50le6sBME1JQMXN_4bV6P44YOOnb1bg
+
+{
+  "title": "My First Project",
+  "description": "This is a description of my projects."
+}
