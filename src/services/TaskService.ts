@@ -44,4 +44,23 @@ export class TaskService {
 
     return await this.taskRepository.assignTaskAssignee(taskId, userId);
   }
+
+  public async updateTaskStatus(taskId: string, userId: string, newStatus: string) {
+    const validStatuses = ['created', 'in_progress', 'completed'];
+    if (!validStatuses.includes(newStatus)) {
+      throw new Error('Invalid task status');
+    }
+
+    const task = await this.taskRepository.findTaskById(taskId);
+    if (!task) {
+      throw new Error('Task not found');
+    }
+
+    if (task.assignedTo !== userId) {
+      throw new Error('You are not authorized to change the status of this task');
+    }
+
+    const completedAt = newStatus === 'completed' ? new Date() : null;
+    return await this.taskRepository.updateTaskStatus(taskId, newStatus, completedAt);
+  }
 }

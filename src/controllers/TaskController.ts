@@ -69,4 +69,31 @@ export class TaskController {
       });
     }
   }
+
+  public async updateTaskStatus(req: ExpressRequestInterface, res: Response) {
+    const { taskId, status } = req.body;
+    const userId = req.userId;
+
+    if (!userId) {
+      logger.error('User ID is missing in the request');
+      res.status(401).json({
+        error: 'Unauthorized',
+        message: 'User ID is missing in the request',
+      });
+      return;
+    }
+
+    try {
+      const updatedTask = await this.taskService.updateTaskStatus(taskId, userId, status);
+
+      logger.info(`Task status updated successfully: ID=${updatedTask.id}, Status=${status}`);
+      res.status(200).json(updatedTask);
+    } catch (error: any) {
+      logger.error(`Failed to update task status: ${error.message}`);
+      res.status(400).json({
+        error: 'Failed to update task status',
+        message: error.message || 'An unexpected error occurred',
+      });
+    }
+  }
 }

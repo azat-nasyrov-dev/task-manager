@@ -31,4 +31,11 @@ export class TaskRepository {
       data: { assignedTo: userId },
     });
   }
+
+  public async updateTaskStatus(taskId: string, status: string, completedAt: Date | null) {
+    return this.prisma.task.update({
+      where: { id: taskId },
+      data: { status, completedAt },
+    });
+  }
 }
