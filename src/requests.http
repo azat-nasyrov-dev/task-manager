@@ -11,7 +11,7 @@ Content-Type: application/json
 ### Create project
 POST http://localhost:5001/projects/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
 
 {
   "title": "My First Project",
@@ -21,20 +21,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN
 ### Create task
 POST http://localhost:5001/tasks/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
 
 {
   "title": "Create API",
   "description": "Implement API endpoint for tasks",
   "deadline": "2024-01-15T00:00:00.000Z",
-  "projectId": "aa28cba5-90b9-4491-8430-bf01bd661044"
+  "projectId": "2aadb1f0-d5e6-4611-aea7-b7db48b51253"
 }
 
 ### Assign task to assignee
 PUT http://localhost:5001/tasks/assign
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
 
 {
-  "taskId": "10cf0c29-2ad8-4c53-bb63-ea26a4dc5035"
+  "taskId": "8e5d1d10-e671-4be8-89e5-bb3088e19372"
+}
+
+### Update status
+PUT http://localhost:5001/tasks/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
+
+{
+  "taskId": "8e5d1d10-e671-4be8-89e5-bb3088e19372",
+  "status": "completed"
 }
