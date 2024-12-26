@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import userRoutes from './routes/UserRoutes';
 import projectRoutes from './routes/ProjectRoutes';
+import taskRoutes from './routes/TaskRoutes';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use('/users', userRoutes);
 app.use('/projects', projectRoutes);
+app.use('/tasks', taskRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`);
