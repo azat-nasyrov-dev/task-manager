@@ -11,9 +11,30 @@ Content-Type: application/json
 ### Create project
 POST http://localhost:5001/projects/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNmE0MTJmOC00OTk3LTQ5ZmUtYWUxOS01Njk3M2E3OGQ5YTAiLCJpYXQiOjE3MzUxNjk1NzUsImV4cCI6MTczNTE3MzE3NX0.E07yV27nWzBL50le6sBME1JQMXN_4bV6P44YOOnb1bg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
 
 {
   "title": "My First Project",
   "description": "This is a description of my projects."
+}
+
+### Create task
+POST http://localhost:5001/tasks/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
+
+{
+  "title": "Create API",
+  "description": "Implement API endpoint for tasks",
+  "deadline": "2024-01-15T00:00:00.000Z",
+  "projectId": "aa28cba5-90b9-4491-8430-bf01bd661044"
+}
+
+### Assign task to assignee
+PUT http://localhost:5001/tasks/assign
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNTcxN2Q0MC02YzhkLTQwMmYtOGZkYS0yMjQ0OWZkNTdkNDgiLCJpYXQiOjE3MzUxODg5MTUsImV4cCI6MTczNTI3NTMxNX0.jhqqirUAMOJ-GXI9NWRLvi_9mmv9kOfMmn0mQRr-pPM
+
+{
+  "taskId": "10cf0c29-2ad8-4c53-bb63-ea26a4dc5035"
 }
