@@ -52,3 +52,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4Y
 ### Fetch projects with tasks
 GET http://localhost:5001/projects
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
+
+### Fetch developer work time
+GET http://localhost:5001/tasks/work-time
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1M2Q4YzEzNi0wMzQ3LTQzYTktODM3OC05NGM1ZGIzZGUxMmMiLCJpYXQiOjE3MzUxOTQ3MzIsImV4cCI6MTczNTI4MTEzMn0.P-rbQQ0aSOJoLjCaO1Qvvzi-3vFczkX_vaGxjY5CQxY
