@@ -38,4 +38,13 @@ export class TaskRepository {
       data: { status, completedAt },
     });
   }
+
+  public async findTasksByUserId(userId: string) {
+    return this.prisma.task.findMany({
+      where: {
+        assignedTo: userId,
+        OR: [{ status: 'completed' }, { status: 'in_progress' }],
+      },
+    });
+  }
 }

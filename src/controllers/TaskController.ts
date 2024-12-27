@@ -96,4 +96,30 @@ export class TaskController {
       });
     }
   }
+
+  public async getDeveloperWorkTime(req: ExpressRequestInterface, res: Response) {
+    const userId = req.userId;
+
+    if (!userId) {
+      logger.error('User ID is missing in the request');
+      res.status(401).json({
+        error: 'Unauthorized',
+        message: 'User ID is missing in the request',
+      });
+      return;
+    }
+
+    try {
+      const totalTime = await this.taskService.getDeveloperWorkTime(userId);
+
+      logger.info(`Developer total work time: ${totalTime} hours`);
+      res.status(200).json({ userId, totalWorkTime: totalTime });
+    } catch (error: any) {
+      logger.error(`Failed to get developer work time: ${error.message}`);
+      res.status(400).json({
+        error: 'Failed to get developer work time',
+        message: error.message || 'An unexpected error occurred',
+      });
+    }
+  }
 }

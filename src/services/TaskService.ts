@@ -63,4 +63,22 @@ export class TaskService {
     const completedAt = newStatus === 'completed' ? new Date() : null;
     return await this.taskRepository.updateTaskStatus(taskId, newStatus, completedAt);
   }
+
+  public async getDeveloperWorkTime(userId: string) {
+    const tasks = await this.taskRepository.findTasksByUserId(userId);
+
+    let totalTimeSpent = 0;
+
+    for (const task of tasks) {
+      let taskStartTime = task.createdAt;
+      if (task.assignedTo) {
+        taskStartTime = task.createdAt;
+      }
+
+      const taskEndTime = task.completedAt || new Date();
+      totalTimeSpent += taskEndTime.getTime() - taskStartTime.getTime();
+    }
+
+    return totalTimeSpent / (1000 * 60 * 60);
+  }
 }

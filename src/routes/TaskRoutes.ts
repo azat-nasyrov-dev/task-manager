@@ -14,5 +14,6 @@ const router = Router();
 router.post('/create', auth, taskController.createTask.bind(taskController));
 router.put('/assign', auth, taskController.assignTaskAssignee.bind(taskController));
 router.put('/status', auth, taskController.updateTaskStatus.bind(taskController));
+router.get('/work-time', auth, taskController.getDeveloperWorkTime.bind(taskController));
 
 export default router;
