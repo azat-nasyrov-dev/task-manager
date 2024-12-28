@@ -122,4 +122,46 @@ export class TaskController {
       });
     }
   }
+
+  public async getDeveloperWorkTimeWithFilters(req: ExpressRequestInterface, res: Response) {
+    const userId = req.userId;
+    const { projectId, startDate, endDate } = req.query;
+
+    if (!userId) {
+      logger.error('User ID is missing in the request');
+      res.status(401).json({
+        error: 'Unauthorized',
+        message: 'User ID is missing in the request',
+      });
+      return;
+    }
+
+    try {
+      const parsedStartDate = startDate ? new Date(startDate as string) : undefined;
+      const parsedEndDate = endDate ? new Date(endDate as string) : undefined;
+
+      if (
+        (startDate && isNaN(parsedStartDate!.getTime())) ||
+        (endDate && isNaN(parsedEndDate!.getTime()))
+      ) {
+        throw new Error('Invalid date format');
+      }
+
+      const totalTime = await this.taskService.getDeveloperWorkTimeWithFilters(
+        userId,
+        projectId as string | undefined,
+        parsedStartDate,
+        parsedEndDate,
+      );
+
+      logger.info(`Filtered developer work time: ${totalTime} hours`);
+      res.status(200).json({ userId, totalWorkTime: totalTime });
+    } catch (error: any) {
+      logger.error(`Failed to get developer work time with filters: ${error.message}`);
+      res.status(400).json({
+        error: 'Failed to get developer work time with filters',
+        message: error.message || 'An unexpected error occurred',
+      });
+    }
+  }
 }

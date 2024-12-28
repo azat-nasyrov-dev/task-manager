@@ -15,5 +15,10 @@ router.post('/create', auth, taskController.createTask.bind(taskController));
 router.put('/assign', auth, taskController.assignTaskAssignee.bind(taskController));
 router.put('/status', auth, taskController.updateTaskStatus.bind(taskController));
 router.get('/work-time', auth, taskController.getDeveloperWorkTime.bind(taskController));
+router.get(
+  '/work-time/filtered',
+  auth,
+  taskController.getDeveloperWorkTimeWithFilters.bind(taskController),
+);
 
 export default router;
