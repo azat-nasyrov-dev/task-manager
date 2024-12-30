@@ -71,4 +71,18 @@ export class TaskRepository {
 
     return this.prisma.task.findMany({ where });
   }
+
+  public async findTasksByProjectsWithFilters(projectId: string, startDate?: Date, endDate?: Date) {
+    const where: any = { projectId };
+
+    if (startDate) {
+      where.createdAt = { gte: startDate };
+    }
+    if (endDate) {
+      if (!where.createdAt) where.createdAt = {};
+      where.createdAt.lte = endDate;
+    }
+
+    return this.prisma.task.findMany({ where });
+  }
 }

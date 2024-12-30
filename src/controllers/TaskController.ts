@@ -164,4 +164,44 @@ export class TaskController {
       });
     }
   }
+
+  public async getTotalProjectWorkTime(req: ExpressRequestInterface, res: Response) {
+    const { projectId, startDate, endDate } = req.query;
+
+    if (!projectId) {
+      logger.error('Project ID is missing in the request');
+      res.status(400).json({
+        error: 'Bad Request',
+        message: 'Project ID is required',
+      });
+      return;
+    }
+
+    try {
+      const parsedStartDate = startDate ? new Date(startDate as string) : undefined;
+      const parsedEndDate = endDate ? new Date(endDate as string) : undefined;
+
+      if (
+        (startDate && isNaN(parsedStartDate!.getTime())) ||
+        (endDate && isNaN(parsedEndDate!.getTime()))
+      ) {
+        throw new Error('Invalid date format');
+      }
+
+      const totalTime = await this.taskService.getTotalProjectWorkTime(
+        projectId as string,
+        parsedStartDate,
+        parsedEndDate,
+      );
+
+      logger.info(`Total project work time: ${totalTime} hours`);
+      res.status(200).json({ projectId, totalWorkTime: totalTime });
+    } catch (error: any) {
+      logger.error(`Failed to get total project work time: ${error.message}`);
+      res.status(400).json({
+        error: 'Failed to get total project work time',
+        message: error.message || 'An expected error occurred',
+      });
+    }
+  }
 }

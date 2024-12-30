@@ -20,5 +20,6 @@ router.get(
   auth,
   taskController.getDeveloperWorkTimeWithFilters.bind(taskController),
 );
+router.get('/project-work-time', auth, taskController.getTotalProjectWorkTime.bind(taskController));
 
 export default router;

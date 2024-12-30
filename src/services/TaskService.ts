@@ -113,4 +113,26 @@ export class TaskService {
 
     return totalTimeSpent / (1000 * 60 * 60);
   }
+
+  public async getTotalProjectWorkTime(projectId: string, startDate?: Date, endDate?: Date) {
+    const tasks = await this.taskRepository.findTasksByProjectsWithFilters(projectId);
+
+    let totalTimeSpent = 0;
+
+    for (const task of tasks) {
+      const taskStartTime = task.createdAt;
+      const taskEndTime = task.completedAt || task.updatedAt || new Date();
+
+      if (startDate && taskStartTime < startDate) {
+        continue;
+      }
+      if (endDate && taskEndTime > endDate) {
+        continue;
+      }
+
+      totalTimeSpent += taskEndTime.getTime() - taskStartTime.getTime();
+    }
+
+    return totalTimeSpent / (1000 * 60 * 60);
+  }
 }
