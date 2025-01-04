@@ -17,11 +17,6 @@ export class TaskService {
     projectId: string,
     userId: string,
   ) {
-    const project = await this.projectRepository.findProjectsByUserId(userId);
-
-    if (!project.some((p) => p.id === projectId)) {
-      throw new Error('Project not found or access denied');
-    }
     if (!title || title.trim() === '') {
       throw new Error('Task title is required');
     }
@@ -29,7 +24,17 @@ export class TaskService {
       throw new Error('Deadline date is required');
     }
 
+    const project = await this.projectRepository.findProjectsByUserId(userId);
+
+    if (!project || !Array.isArray(project) || !project.some((p) => p.id === projectId)) {
+      throw new Error('Project not found or access denied');
+    }
+
     return await this.taskRepository.createTask(title, description, deadline, projectId);
+  }
+
+  public async findTasksByProjectId(projectId: string) {
+    return this.taskRepository.findTasksByProjectId(projectId);
   }
 
   public async assignTaskAssignee(taskId: string, userId: string) {
@@ -56,7 +61,7 @@ export class TaskService {
       throw new Error('Task not found');
     }
 
-    if (task.assignedTo !== userId) {
+    if (task.assignedTo !== userId && task.project.userId !== userId) {
       throw new Error('You are not authorized to change the status of this task');
     }
 

@@ -43,6 +43,41 @@ export class TaskController {
     }
   }
 
+  public async findTasksByProjectId(
+    req: ExpressRequestInterface,
+    res: Response,
+  ): Promise<Response> {
+    try {
+      const { projectId } = req.params;
+
+      if (!projectId) {
+        logger.error('Project ID is missing in the request');
+        return res.status(400).json({
+          error: 'Invalid request',
+          message: 'Project ID is missing',
+        });
+      }
+
+      logger.info(`Fetching tasks for project ID: ${projectId}`);
+
+      const tasks = await this.taskService.findTasksByProjectId(projectId);
+
+      if (!tasks || tasks.length === 0) {
+        logger.warn(`No tasks found for project ID: ${projectId}`);
+        throw new Error('No tasks found for project');
+      }
+
+      logger.info(`Found ${tasks.length} tasks for project ID: ${projectId}`);
+
+      return res.status(200).json(tasks);
+    } catch (error: any) {
+      logger.error(`Failed to fetch tasks for project: ${error.message}`);
+      return res.status(400).json({
+        error: 'Failed to fetch tasks',
+        message: error.message,
+      });
+    }
+  }
   public async assignTaskAssignee(req: ExpressRequestInterface, res: Response) {
     const { taskId } = req.body;
     const userId = req.userId;
