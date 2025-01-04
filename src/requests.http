@@ -11,7 +11,7 @@ Content-Type: application/json
 ### Create project
 POST http://localhost:5001/projects/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 {
   "title": "My First Project",
@@ -21,50 +21,50 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkM
 ### Create task
 POST http://localhost:5001/tasks/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 {
   "title": "Create API",
   "description": "Implement API endpoint for tasks",
   "deadline": "2024-01-15T00:00:00.000Z",
-  "projectId": "f0955b95-3cc5-4331-be15-10cd26049c6b"
+  "projectId": "cff5255f-6234-4a4d-a798-080c79b1ae06"
 }
 
 ### Assign task to assignee
 PUT http://localhost:5001/tasks/assign
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 {
-  "taskId": "21c3ca9f-6f2a-40e6-aeaf-1c4d92448a9e"
+  "taskId": "6aa577bd-61a4-4425-8fa7-6f9575979176"
 }
 
 ### Update status
 PUT http://localhost:5001/tasks/status
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 {
-  "taskId": "21c3ca9f-6f2a-40e6-aeaf-1c4d92448a9e",
+  "taskId": "6aa577bd-61a4-4425-8fa7-6f9575979176",
   "status": "completed"
 }
 
 ### Fetch projects with tasks
 GET http://localhost:5001/projects
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 ### Fetch developer work time
 GET http://localhost:5001/tasks/work-time
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 ### Fetch developer's work time with filters by project
 GET http://localhost:5001/tasks/work-time/filtered?projectId=f0955b95-3cc5-4331-be15-10cd26049c6b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 ### Fetch developer's work time with filters by time
 GET http://localhost:5001/tasks/work-time/filtered?projectId=f0955b95-3cc5-4331-be15-10cd26049c6b&startDate=2024-12-01&endDate=2024-12-31
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
 
 ### Fetch general time for all developers by particular project
 GET http://localhost:5001/tasks/project-work-time?projectId=f0955b95-3cc5-4331-be15-10cd26049c6b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YzlkMWRjYi03YjQzLTQwOWMtOTU3OS05OTFjZGZjOTZmNTUiLCJpYXQiOjE3MzU1NzAxMjEsImV4cCI6MTczNTY1NjUyMX0.s-uMl5FZ5UJpbsfVvHcVXhorAqQVwh7I1AX331U3LNM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmJhMTNhZS1lNzRjLTRmYmYtYWJjMS1kNmM2ZmYwMWIxNjAiLCJpYXQiOjE3MzYwMDI2ODgsImV4cCI6MTczNjA4OTA4OH0.2nz9OgfAsbHz1hztS_pW-RcuExFex64PtFL4tNPlow4
