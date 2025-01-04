@@ -17,7 +17,7 @@ export class ProjectService {
 
   public async findProjectsWithTasks(userId: string) {
     const projects = await this.projectRepository.findProjectsByUserId(userId);
-    if (!projects) {
+    if (!projects || projects.length === 0) {
       throw new Error('No projects found');
     }
 
